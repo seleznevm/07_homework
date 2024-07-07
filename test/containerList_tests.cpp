@@ -136,3 +136,18 @@ TEST(ContList, sumOfCont)
     //Assert
     ASSERT_EQ(sum, 10);
 }
+
+TEST(ContList, copy)
+{
+    //Arrange
+    ContList::ContainerList<int> cont1;
+    for(size_t i = 0; i < 5; i++)
+        cont1.push_back(i);    
+    //Act
+    ContList::ContainerList<int> cont2(cont1);
+    //Assert
+    for(size_t i = 0; i < 5; i++)
+        {
+            ASSERT_EQ(cont1[i], cont2[i]);
+        }
+}

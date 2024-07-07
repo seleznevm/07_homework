@@ -187,6 +187,15 @@ class ContainerList
             other.tail = nullptr;
             other.size = 0;
         }
+        ContainerList(const ContainerList& other) : head(nullptr), tail(nullptr), size(0)
+        {
+            Node<T>* current = other.head;
+            while(current != nullptr)
+            {
+                this->push_back(current->data);
+                current = current->next;
+            }
+        }
 
         ContainerList& operator=(ContainerList&& other) noexcept {
             if(this != &other)
