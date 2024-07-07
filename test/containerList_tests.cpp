@@ -151,3 +151,19 @@ TEST(ContList, copy)
             ASSERT_EQ(cont1[i], cont2[i]);
         }
 }
+
+TEST(ContList, move)
+{
+    //Arrange
+    ContList::ContainerList<int> cont1;
+    ContList::ContainerList<int> cont2;
+    for(size_t i = 0; i < 5; i++)
+        cont1.push_back(i);  
+    //Act
+    cont2 = std::move(cont1);
+    //Assert
+    ASSERT_EQ(cont1.GetSize(), 0);
+    ASSERT_EQ(cont2.GetSize(), 5);
+    for(size_t i = 0; i < 5; i++)
+        ASSERT_EQ(cont2[i], i);
+}
